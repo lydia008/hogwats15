@@ -54,3 +54,7 @@ class TestCalc:
         else:
             result = self.calc.div(a, b)
             assert result == expect
+
+
+if __name__ == '__main__':
+    pytest.main(['test_calc.py'])
