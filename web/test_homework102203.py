@@ -16,10 +16,11 @@ from selenium.webdriver.common.by import By
 # shelve 数据库实现数据存储
 class TestDemo:
     def setup_method(self, method):
-        options = Options()
-        options.debugger_address = "127.0.0.1:9222"
+        # options = Options()
+        # options.debugger_address = "127.0.0.1:9222"
         # self.driver = webdriver.Chrome(options=options)
         self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
         self.driver.implicitly_wait(5)
 
     def teardown_method(self, method):
@@ -90,8 +91,18 @@ class TestDemo:
         self.driver.find_element(By.CSS_SELECTOR, '.index_service_cnt_itemWrap:nth-child(2)').click()
         # 定位上传按钮，上传文件用send_keys(),参数为文件的绝对路径
         self.driver.find_element(By.CSS_SELECTOR, '.ww_fileImporter_fileContainer_uploadInputMask').send_keys(
-            r"D:\Python\testdatas\mydata.xls")
+            r"D:\Python\testdatas\mydatas.xlsx")
         # 验证上传文件名
         filename = self.driver.find_element(By.CSS_SELECTOR, '.ww_fileImporter_fileContainer_fileNames').text
-        assert "mydata.xls" == filename
+        assert "mydatas.xlsx" == filename
         sleep(3)
+        # 导入文件
+        self.driver.find_element(By.CSS_SELECTOR, '.ww_fileImporter_submit').click()
+        sleep(3)
+        # 获取上传后的提示信息
+        results = self.driver.find_element(By.CSS_SELECTOR, '.ww_fileImporter_successImportText').text
+        print(results)
+        # 点击完成按钮
+        btnname = self.driver.find_element(By.CSS_SELECTOR, '.ww_fileImporter_successBtnWrap').text
+        assert btnname == '完成'
+        print("文件上传成功！")
