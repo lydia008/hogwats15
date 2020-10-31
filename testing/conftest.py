@@ -5,8 +5,7 @@
 import pytest
 
 
-# @pytest.fixture(autouse=True, scope="function")
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def login():
     # setup 操作
     print("登录操作")
@@ -16,8 +15,8 @@ def login():
     print("登出操作")
 
 
-# @pytest.fixture(autouse=True)
-@pytest.fixture()
+@pytest.fixture(scope='session', autouse=True)
 def conn_db():
     print("完成 数据库连接")
-    return "database"
+    yield "database"
+    print("关闭 数据库连接")
