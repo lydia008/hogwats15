@@ -31,3 +31,10 @@ def conn_db():
     print("完成 数据库连接")
     yield "database"
     print("关闭 数据库连接")
+
+
+# 中文转换
+def pytest_collection_modifyitems(session, config, items):
+    for item in items:
+        item.name = item.name.encode('utf-8').decode('unicode-escape')
+        item._nodeid = item.nodeid.encode('utf-8').decode('unicode-escape')

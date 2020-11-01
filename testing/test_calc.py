@@ -47,7 +47,7 @@ class TestCalc:
     # 除法
     @pytest.mark.parametrize('a,b,expect', [
         [1, 1, 1], [200, 100, 2], [0.2, 1, 0.2], [-1, -1, 1], [5, 0, '除数不能为0']
-    ], ids=['int_case', 'bignum_case', 'float_case', 'Minus_case', 'zero_case'])
+    ], ids=['整数测试用例', 'bignum_case', 'float_case', 'Minus_case', 'zero_case'])
     def test_div(self, a, b, expect):
         if b == 0:
             print("除数不能为0！")
