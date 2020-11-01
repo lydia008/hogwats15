@@ -5,12 +5,23 @@
 import pytest
 
 
-@pytest.fixture()
-def login():
+# @pytest.fixture()
+# def login():
+#     # setup 操作
+#     print("登录操作")
+#     # yield 相当于return 操作
+#     yield ['tom', '123456']
+#     # teardown 操作
+#     print("登出操作")
+
+# login param 用法
+@pytest.fixture(scope="function", params=['tom', 'lydia'])
+def login(request):
     # setup 操作
     print("登录操作")
+    username = request.param
     # yield 相当于return 操作
-    yield ['tom', '123456']
+    yield username
     # teardown 操作
     print("登出操作")
 

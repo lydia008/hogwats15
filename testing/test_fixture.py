@@ -22,6 +22,6 @@ def test_case2():
 
 
 # fixture 传入的顺序是执行的顺序
-def test_case3(conn_db):
+def test_case3(login, conn_db):
     print(conn_db)
     print("用例3")
