@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 # Date ：2020/10/31 18:47
 # Author：Lydia
+from typing import List
+
 import pytest
 
 
@@ -34,7 +36,19 @@ def conn_db():
 
 
 # 中文转换
-def pytest_collection_modifyitems(session, config, items):
+# pytest test_calc.py -m div -vs 执行打div标签的用例
+def pytest_collection_modifyitems(
+        session: "Session", config: "Config", items: List["Item"]
+) -> None:
+    print(type(items))
+    # 调整执行顺序
+    items.reverse
+    # 调整编码格式
     for item in items:
         item.name = item.name.encode('utf-8').decode('unicode-escape')
         item._nodeid = item.nodeid.encode('utf-8').decode('unicode-escape')
+        # 加入标签
+        if 'add' in item._nodeid:
+            item.add_marker(pytest.mark.add)
+        elif 'div' in item._nodeid:
+            item.add_marker(pytest.mark.div)
