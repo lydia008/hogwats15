@@ -3,14 +3,14 @@
 # Date ：2020/10/25 15:14
 # Author：Lydia
 from time import sleep
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
+
+from web.podemo1.page.base_page import BasePage
 
 
-class AddMembersPage:
-    def __init__(self, driver: WebDriver):
-        self.driver = driver
+class AddMembersPage(BasePage):
+    # def __init__(self, driver: WebDriver):
+    #     self.driver = driver
 
     # 添加联系人
     def add_member(self, username, account, phonenum, position, mail):
