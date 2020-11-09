@@ -10,12 +10,12 @@ class TestWX:
         self.main = MainPage()
 
     def test_addmember(self):
-        username = "monica06"
-        account = "monica06"
-        phonenum = "13900012306"
+        username = "monica32"
+        account = "monica32"
+        phonenum = "13900012332"
         position = "工程师"
-        mail = "test6@qq.com"
+        mail = "test32@qq.com"
         # assert self.main.goto_AddMember().add_member()
-        addmenber = self.main.goto_AddMember()
-        addmenber.add_member(username, account, phonenum, position, mail)
-        assert username in addmenber.get_member()
+        addmember = self.main.goto_AddMember()
+        addmember.add_member(username, account, phonenum, position, mail)
+        assert username in addmember.get_member(username)
