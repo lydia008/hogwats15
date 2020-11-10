@@ -18,7 +18,7 @@ class TestWework:
             "noReset": "True"
         }
 
-        # 本机ip:server端口
+        # 本机ip:server端口; 建立客户端和服务端连接
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", caps)
 
     def teardown(self):
@@ -31,3 +31,4 @@ class TestWework:
         el2 = self.driver.find_element_by_xpath(
             "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.ListView/android.widget.RelativeLayout[3]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView")
         el2.click()
+
